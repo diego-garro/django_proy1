@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.template import Template, Context
 import datetime
 
-path = '/home/diego/Documentos/Developer/Python/django/Proyecto1/Proyecto1/plantillas/{}'
+path = '/home/diego/Documentos/Developer/Python/django/django_proy1/Proyecto1/plantillas/{}'
 
 def saludo(request): # Primera vista
     doc_externo = open(path.format('saludo.html'), 'r')
