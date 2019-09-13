@@ -2,6 +2,7 @@
 
 from django.http import HttpResponse
 from django.template import Template, Context
+from django.template.loader import get_template
 import datetime
 
 path = '/home/diego/Documentos/Developer/Python/django/django_proy1/Proyecto1/plantillas/{}'
@@ -16,11 +17,13 @@ def saludo(request): # Primera vista
     p1 = Persona("Profesor Diego", "Molina")
     fecha_actual = datetime.datetime.now()
     temas_curso = ["Plantillas", "Modelos", "Formularios", "Vistas", "Despliegue"]
-    doc_externo = open(path.format('saludo.html'), 'r')
-    plt = Template(doc_externo.read())
-    doc_externo.close()
-    ctx = Context({"nombre" : p1.nombre, "apellido" : p1.apellido, "fecha": fecha_actual, "temas" : temas_curso})
-    documento = plt.render(ctx)
+    #doc_externo = open(path.format('saludo.html'), 'r')
+    #plt = Template(doc_externo.read())
+    #doc_externo.close()
+    doc_externo = get_template('saludo.html')
+    #ctx = Context({"nombre" : p1.nombre, "apellido" : p1.apellido, "fecha": fecha_actual, "temas" : temas_curso})
+    dicc = {"nombre" : p1.nombre, "apellido" : p1.apellido, "fecha": fecha_actual, "temas" : temas_curso}
+    documento = doc_externo.render(dicc)
     return HttpResponse(documento)
 
 def despedida(request):
