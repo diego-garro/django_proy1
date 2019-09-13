@@ -3,7 +3,19 @@
         <h1 style="color: red">
             Hola alumnos estamos viendo el saludo desde la plantilla.
         </h1>
-        <p>El nombre del profesor es: {{nombre}} {{apellido}}</p>
+        <p>El nombre del profesor es: {{nombre.upper}} {{apellido}}</p>
         <p>Estamos viendo la actualozación de la plantilla a día: {{fecha.day}} / {{fecha.month}} / {{fecha.year}}</p>
+        <p><strong>Temas del curso:</strong></p>
+        <p>
+            <ul>
+                {% if temas %}
+                    {% for eltema in temas %}
+                        <li>{{eltema}}</li>
+                    {% endfor %}
+                {% else %}
+                    <p>No hay elementos que mostrar!</p>
+                {% endif %}
+            </ul>
+        </p>
     </body>
 </html>

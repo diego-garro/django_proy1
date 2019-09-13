@@ -15,10 +15,11 @@ class Persona(object):
 def saludo(request): # Primera vista
     p1 = Persona("Profesor Diego", "Molina")
     fecha_actual = datetime.datetime.now()
+    temas_curso = ["Plantillas", "Modelos", "Formularios", "Vistas", "Despliegue"]
     doc_externo = open(path.format('saludo.html'), 'r')
     plt = Template(doc_externo.read())
     doc_externo.close()
-    ctx = Context({"nombre" : p1.nombre, "apellido" : p1.apellido, "fecha": fecha_actual})
+    ctx = Context({"nombre" : p1.nombre, "apellido" : p1.apellido, "fecha": fecha_actual, "temas" : temas_curso})
     documento = plt.render(ctx)
     return HttpResponse(documento)
 
