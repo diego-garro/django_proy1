@@ -6,11 +6,19 @@ import datetime
 
 path = '/home/diego/Documentos/Developer/Python/django/django_proy1/Proyecto1/plantillas/{}'
 
+class Persona(object):
+
+    def __init__(self, nombre, apellido):
+        self.nombre = nombre
+        self.apellido = apellido
+
 def saludo(request): # Primera vista
+    p1 = Persona("Profesor Diego", "Molina")
+    fecha_actual = datetime.datetime.now()
     doc_externo = open(path.format('saludo.html'), 'r')
     plt = Template(doc_externo.read())
     doc_externo.close()
-    ctx = Context()
+    ctx = Context({"nombre" : p1.nombre, "apellido" : p1.apellido, "fecha": fecha_actual})
     documento = plt.render(ctx)
     return HttpResponse(documento)
 
