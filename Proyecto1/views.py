@@ -3,6 +3,7 @@
 from django.http import HttpResponse
 from django.template import Template, Context
 from django.template.loader import get_template
+from django.shortcuts import render
 import datetime
 
 path = '/home/diego/Documentos/Developer/Python/django/django_proy1/Proyecto1/plantillas/{}'
@@ -20,11 +21,11 @@ def saludo(request): # Primera vista
     #doc_externo = open(path.format('saludo.html'), 'r')
     #plt = Template(doc_externo.read())
     #doc_externo.close()
-    doc_externo = get_template('saludo.html')
+    #doc_externo = get_template('saludo.html')
     #ctx = Context({"nombre" : p1.nombre, "apellido" : p1.apellido, "fecha": fecha_actual, "temas" : temas_curso})
     dicc = {"nombre" : p1.nombre, "apellido" : p1.apellido, "fecha": fecha_actual, "temas" : temas_curso}
-    documento = doc_externo.render(dicc)
-    return HttpResponse(documento)
+    #documento = doc_externo.render(dicc)
+    return render(request, "saludo.html", dicc)
 
 def despedida(request):
     return HttpResponse("Hasta luego alumnos de Django!")
