@@ -27,6 +27,10 @@ def saludo(request): # Primera vista
     #documento = doc_externo.render(dicc)
     return render(request, "saludo.html", dicc)
 
+def curso_C(request):
+    fecha_actual = datetime.datetime.now()
+    return render(request, "CursoC.html", {"dame_fecha" : fecha_actual})
+
 def despedida(request):
     return HttpResponse("Hasta luego alumnos de Django!")
 
